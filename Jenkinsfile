@@ -1,7 +1,9 @@
 
 pipeline {
     agent any
-
+    options {
+        skipDefaultCheckout()
+    }
     environment {
         SONARQUBE = 'SonarQube'
         IMAGE_NAME = 'hermawan509/vulnerable-webgoat'
@@ -15,6 +17,12 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Static AppSec Testing (SonarQube)') {
             steps {
                 script {
