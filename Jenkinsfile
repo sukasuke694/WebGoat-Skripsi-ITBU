@@ -15,12 +15,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Static AppSec Testing (SonarQube)') {
             steps {
                 script {
