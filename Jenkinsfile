@@ -80,7 +80,7 @@ pipeline {
                     echo "Menjalankan container baru..."
                     bat """
                         docker -H ${DOCKER_HOST} pull ${IMAGE_NAME}:${IMAGE_TAG}
-                        docker -H ${DOCKER_HOST} run -d --name ${CONTAINER_NAME} -p 8080:8080 ${IMAGE_NAME}:${IMAGE_TAG}
+                        docker -H ${DOCKER_HOST} run -d --restart=always --name ${CONTAINER_NAME} -p 8080:8080 ${IMAGE_NAME}:${IMAGE_TAG}
                     """
                 }
             }
